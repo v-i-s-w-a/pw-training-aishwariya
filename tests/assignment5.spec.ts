@@ -13,7 +13,7 @@ test('basic test', async ({ page }: { page: any }) => {
     .fill('secret_sauce');
   const loginButton = page.getByRole('button', { name: 'Login' });
   await loginButton.click();
-  const errorMessage = page.locator('[data-test="error"]');
+  const errorMessage = page.getByTestId('error');
   await expect(errorMessage).toBeVisible();
-  console.log(errorMessage);
+  
 });
