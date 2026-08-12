@@ -23,6 +23,6 @@ test('Add two products, verify cart, remove one product', async ({ page }) => {
   'Sauce Labs Onesie',
   'Sauce Labs Backpack',
 ]);
-  await cartPage.removeItems('Sauce Labs Backpack').click();
+  await cartPage.removeItems('Sauce Labs Backpack');
   await expect(cartPage.itemNames()).toHaveText('Sauce Labs Onesie');
 });

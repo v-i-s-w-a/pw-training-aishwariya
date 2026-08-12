@@ -1,5 +1,5 @@
 import { Locator, Page } from '@playwright/test';
-import { BasePage } from '../pages/basePage';
+import { BasePage } from '../pages/BasePage';
 export class CartPage extends BasePage {
   constructor(page: Page) {
     super(page, '/cart.html');
@@ -7,10 +7,11 @@ export class CartPage extends BasePage {
 itemNames(): Locator {
   return this.page.getByTestId('inventory-item-name');
 }
-removeItems(productName: string): Locator {
-    return this.page
+async removeItems(productName: string){
+    await this.page
       .locator('.cart_item')
       .filter({ hasText: productName })
-      .getByRole('button', { name: /remove/i });
+      .getByRole('button', { name: /remove/i })
+      .click();
   }
 }
